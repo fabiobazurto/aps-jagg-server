@@ -9,9 +9,10 @@
       Query: {
         // fetch the profile of currently authenticated user
         async me (_, args, { user }) {
-          // make sure user is logged in
+            // make sure user is logged in
+	    console.log(user);
           if (!user) {
-            throw new Error('You are not authenticated!')
+            throw new Error('You are not authenticatedddd!')
           }
 
           // user is authenticated
