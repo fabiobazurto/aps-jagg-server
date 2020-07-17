@@ -5,7 +5,7 @@ require('dotenv').config()
 const dbConnect = {
     "username": "root",
     "password": "kame123+",
-    "database": "jagg_bd",
+    "database": "jagg_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
 }
