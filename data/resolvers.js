@@ -10,9 +10,9 @@
         // fetch the profile of currently authenticated user
         async me (_, args, { user }) {
             // make sure user is logged in
-	    console.log(user);
+
           if (!user) {
-            throw new Error('You are not authenticatedddd!')
+            throw new Error('You are not authenticated!')
           }
 
           // user is authenticated
@@ -42,7 +42,7 @@
           const user = await User.findOne({ where: { email } })
 
           if (!user) {
-            throw new Error('No user with that email')
+              throw new Error('No user with that email')
           }
 
           const valid = await bcrypt.compare(password, user.password)

@@ -1,9 +1,8 @@
 const express = require('express')
-const cors = require('cors');
+const bodyparser = require('body-parser');
 const jwt = require('express-jwt');
 const { ApolloServer, gql } = require('apollo-server-express');
 const schema = require('./data/schema.js');
-
 
 const auth = jwt({
       secret: process.env.JWT_SECRET,
@@ -15,7 +14,7 @@ const app = express();
 
 const PORT = 4000;
 
-const server = new ApolloServer({ schema,
+const server = new ApolloServer({ cors: false, schema,
 				  
 				  playground:
 				  {
@@ -27,7 +26,13 @@ const server = new ApolloServer({ schema,
 				});
 
 
-app.get('/protected',auth, (req, res) => {
+
+//app.use(cors); 
+server.applyMiddleware({ app });
+app.use(bodyparser());
+//app.use('/graphql', auth)
+
+app.get('/graphql',auth, (req, res) => {
 	return res.send(   {
       schema,
       context: {
@@ -36,12 +41,6 @@ app.get('/protected',auth, (req, res) => {
 	});
 }
 );
- 
-server.applyMiddleware({ app });
-
-app.use('/graphql', auth)
-
-
 
 app.listen({ port: PORT  }, () =>{
 	   console.log("Server ready at http://localhost:4000/${server.graphqlPath}");
