@@ -14,7 +14,7 @@ const { User, Book } = require('../models')
 		    throw new Error('You are not authenticated!')
 		}
 		// user is authenticated
-		return await User.findById(user.id)
+		return await User.findByPk(user.id)
             },
             async books (_, args,{user}) {
 		// user is authenticated
