@@ -35,17 +35,24 @@ You will need the following things properly installed on your computer.
 * `npm install`
 * create a file called .env and edit with your database credentials
 `NODE_ENV=DEVELOPMENT
+
 DB_HOST=localhost
+
 DB_USERNAME=<YOUR-DATABASE-USER>
+
 DB_PASSWORD=<YOUR-PASSWORD-USER>
+
 DB_NAME=<YOUR-DATABASE>
+
 JWT_SECRET=somereallylongsecretkey`
 
 * Install the ORM
 `npm install -g sequelize-cli`
 * Restore database schema
 `sequelize-cli db:create
+
 sequelize-cli db:migrate
+
 sequelize-cli db:seed:all
 `
 
