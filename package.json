@@ -27,7 +27,8 @@
 						"jsonwebtoken": "^8.5.1",
 						"mysql2": "^2.1.0",
 						"nodemon": "^1.18.4",
-						"sequelize": "^6.3.3"
+						"sequelize": "^6.3.3",
+						"sequelize-cli": "^6.2.0"
 			},
 			"devDependencies": {
 						"apollo-link": "^1.2.3",
