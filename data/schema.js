@@ -9,7 +9,15 @@ const typeDefs = `
         email: String!
       }
 
+     type Book{
+       id: Int!
+       title: String!
+       short_description: String!
+     }
+
       type Query {
+        users: [User]
+        books: [Book]
         me: User
       }
 
