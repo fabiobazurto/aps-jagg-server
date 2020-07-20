@@ -30,7 +30,9 @@ You will need the following things properly installed on your computer.
 ## Installation
 
 * Clone this project
+
 `git clone https://github.com/fabiobazurto/aps-jagg-server.git`
+
 * `cd aps-jagg-server`
 * `npm install`
 * create a file called .env and edit with your database credentials
@@ -45,8 +47,11 @@ JWT_SECRET=somereallylongsecretkey
 ```
 
 * Install the ORM
+
 `npm install -g sequelize-cli`
+
 * Restore database schema
+
 ```sh
 sequelize-cli db:create
 
