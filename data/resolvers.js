@@ -1,11 +1,14 @@
 // data/resolvers.js
+const { GraphQLUpload } = require("apollo-server-express");
+const { User, Book } = require('../models');
+const bcrypt = require('bcrypt');
+const jsonwebtoken = require('jsonwebtoken');
+const toString = require('stream-to-string');
 
-const { User, Book } = require('../models')
-    const bcrypt = require('bcrypt')
-    const jsonwebtoken = require('jsonwebtoken')
-    require('dotenv').config()
+require('dotenv').config()
 
-    const resolvers = {
+const resolvers = {
+    Upload: GraphQLUpload,
 	Query: {
 	    // fetch the profile of currently authenticated user
             async me (_, args, { user }) {
@@ -18,24 +21,37 @@ const { User, Book } = require('../models')
             },
             async books (_, args,{user}) {
 		// user is authenticated
-/*		if (!user) {
+		if (!user) {
 		    throw new Error('You are not authenticated!')
 		}
-*/		
+		
 		return await Book.findAll()
             },
             async users (_, args,{user}) {
 		// user is authenticated
-/*		if (!user) {
+		if (!user) {
 		    throw new Error('You are not authenticated!')
 		}
-*/		
+		
 		return await User.findAll()
             },
 	    
 	},
 
-	Mutation: {
+    Mutation: {
+	async uploadFile(_, { image }, {user}) {
+//	    const { createReadStream, filename, mimetype, encoding } = await image;
+//	    const stream = createReadStream();
+	    console.log(image);
+	    try{
+
+		User.update({ avatar: image },{where: {id:user.id}});
+		console.log('done');
+	    }
+	    catch(error){
+		console.log(error);
+	    }
+	},	    
             // Handle user signup
             async signup (_, { username, email, password }) {
 		const user = await User.create({
