@@ -23,7 +23,7 @@
 						"express-graphql": "^0.11.0",
 						"express-jwt": "^6.0.0",
 						"graphql": "^15.3.0",
-						"graphql-tools": "^6.0.14",
+						"graphql-tools": "^6.2.6",
 						"jsonwebtoken": "^8.5.1",
 						"mysql2": "^2.1.0",
 						"nodemon": "^1.18.4",
